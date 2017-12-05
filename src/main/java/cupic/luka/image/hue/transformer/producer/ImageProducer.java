@@ -1,4 +1,4 @@
-package cupic.luka.image.hue.transformer;
+package cupic.luka.image.hue.transformer.producer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

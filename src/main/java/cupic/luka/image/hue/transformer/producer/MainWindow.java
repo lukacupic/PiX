@@ -2,7 +2,6 @@ package cupic.luka.image.hue.transformer.producer;
 
 import cupic.luka.image.hue.transformer.HueImageFilter;
 import cupic.luka.image.hue.transformer.ImagePanel;
-import cupic.luka.image.hue.transformer.ImageProducer;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.RGBImageFilter;
