@@ -1,4 +1,4 @@
-package cupic.luka.image.hsb.transformer.filters;
+package cupic.luka.hsb.filters;
 
 import java.awt.Color;
 

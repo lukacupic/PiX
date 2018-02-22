@@ -1,9 +1,11 @@
-package cupic.luka.image.hsb.transformer;
+package cupic.luka.hsb;
 
-import cupic.luka.image.hsb.transformer.filters.AbstractFilter;
-import cupic.luka.image.hsb.transformer.filters.BrightnessFilter;
-import cupic.luka.image.hsb.transformer.filters.HueFilter;
-import cupic.luka.image.hsb.transformer.filters.SaturationFilter;
+import cupic.luka.hsb.filters.HueFilter;
+import cupic.luka.hsb.filters.AbstractFilter;
+import cupic.luka.hsb.filters.BrightnessFilter;
+import cupic.luka.hsb.filters.SaturationFilter;
+import cupic.luka.hsb.image.ImagePanel;
+import cupic.luka.hsb.image.ImageProducer;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;

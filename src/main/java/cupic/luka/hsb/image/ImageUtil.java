@@ -1,4 +1,4 @@
-package cupic.luka.image.hsb.transformer;
+package cupic.luka.hsb.image;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
