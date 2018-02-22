@@ -17,6 +17,11 @@ public class BrightnessFilter extends AbstractFilter {
 	public int filterRGB(int x, int y, int rgb) {
 		Color c = new Color(rgb);
 		float[] hsb = Color.RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), null);
-		return Color.HSBtoRGB(hsb[0], hsb[1], hsb[2] + offset);
+
+		float brightness = hsb[2] + offset;
+		if (brightness < 0) brightness = 0;
+		else if (brightness > 1) brightness = 1;
+
+		return Color.HSBtoRGB(hsb[0], hsb[1], brightness);
 	}
 }

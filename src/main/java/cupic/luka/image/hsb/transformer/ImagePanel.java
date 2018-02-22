@@ -13,9 +13,9 @@ public class ImagePanel extends JPanel {
 
 	private BufferedImage original;
 
-	public ImagePanel(String filename) throws IOException {
+	public ImagePanel(File file) throws IOException {
 		try {
-			image = ImageIO.read(new File(filename));
+			image = ImageIO.read(file);
 			original = ImageUtil.copyImage(image);
 		} catch (IOException ex) {
 			throw new IOException();

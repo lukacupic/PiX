@@ -15,6 +15,11 @@ public class SaturationFilter extends AbstractFilter {
 	public int filterRGB(int x, int y, int rgb) {
 		Color c = new Color(rgb);
 		float[] hsb = Color.RGBtoHSB(c.getRed(), c.getGreen(), c.getBlue(), null);
-		return Color.HSBtoRGB(hsb[0], hsb[1] + offset, hsb[2]);
+
+		float saturation = hsb[1] + offset;
+		if (saturation < 0) saturation = 0;
+		else if (saturation > 1) saturation = 1;
+
+		return Color.HSBtoRGB(hsb[0], saturation, hsb[2]);
 	}
 }

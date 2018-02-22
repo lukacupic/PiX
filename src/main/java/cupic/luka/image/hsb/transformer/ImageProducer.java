@@ -30,7 +30,7 @@ public class ImageProducer {
 	 *                     the image
 	 */
 	public void save(BufferedImage image, String path) throws IOException {
-		Path realPath = Paths.get(path, "image" + "." + format);
-		ImageIO.write(image, "jpeg", realPath.toFile());
+		Path realPath = Paths.get(path);
+		ImageIO.write(image, format, realPath.toFile());
 	}
 }
