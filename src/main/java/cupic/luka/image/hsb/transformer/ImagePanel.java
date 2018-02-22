@@ -7,12 +7,31 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * A {@link JPanel} for holding a single {@link BufferedImage}
+ * in it's center.
+ *
+ * @author Luka Cupic
+ */
 public class ImagePanel extends JPanel {
 
+	/**
+	 * The image to hold.
+	 */
 	private BufferedImage image;
 
+	/**
+	 * The original version of the image.
+	 * Held for better performance purposes.
+	 */
 	private BufferedImage original;
 
+	/**
+	 * Creates a new ImagePanel object.
+	 *
+	 * @param file the file from which to read the image
+	 * @throws IOException if the image cannot be read
+	 */
 	public ImagePanel(File file) throws IOException {
 		try {
 			image = ImageIO.read(file);
@@ -22,10 +41,20 @@ public class ImagePanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Gets the image.
+	 *
+	 * @return the image
+	 */
 	public BufferedImage getImage() {
 		return image;
 	}
 
+	/**
+	 * Gets the original image.
+	 *
+	 * @return the original image
+	 */
 	public BufferedImage getOriginal() {
 		return original;
 	}

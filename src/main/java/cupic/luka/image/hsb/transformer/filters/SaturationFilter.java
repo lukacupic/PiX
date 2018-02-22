@@ -2,13 +2,17 @@ package cupic.luka.image.hsb.transformer.filters;
 
 import java.awt.Color;
 
+/**
+ * The filter for modifying the saturation of an image.
+ *
+ * @author Luka Cupic
+ */
 public class SaturationFilter extends AbstractFilter {
 
+	/**
+	 * The default constructor.
+	 */
 	public SaturationFilter() {
-	}
-
-	public SaturationFilter(float offset) {
-		this.offset = offset;
 	}
 
 	@Override

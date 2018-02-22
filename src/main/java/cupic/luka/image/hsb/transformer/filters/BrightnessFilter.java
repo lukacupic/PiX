@@ -1,16 +1,18 @@
 package cupic.luka.image.hsb.transformer.filters;
 
-import cupic.luka.image.hsb.transformer.filters.AbstractFilter;
+import java.awt.*;
 
-import java.awt.Color;
-
+/**
+ * The filter for modifying the brightness of an image.
+ *
+ * @author Luka Cupic
+ */
 public class BrightnessFilter extends AbstractFilter {
 
+	/**
+	 * The default constructor.
+	 */
 	public BrightnessFilter() {
-	}
-
-	public BrightnessFilter(float offset) {
-		this.offset = offset;
 	}
 
 	@Override

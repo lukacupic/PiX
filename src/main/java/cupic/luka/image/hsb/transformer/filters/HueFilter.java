@@ -2,13 +2,17 @@ package cupic.luka.image.hsb.transformer.filters;
 
 import java.awt.Color;
 
+/**
+ * The filter for modifying the hue of an image.
+ *
+ * @author Luka Cupic
+ */
 public class HueFilter extends AbstractFilter {
 
+	/**
+	 * The default constructor.
+	 */
 	public HueFilter() {
-	}
-
-	public HueFilter(float offset) {
-		this.offset = offset;
 	}
 
 	@Override

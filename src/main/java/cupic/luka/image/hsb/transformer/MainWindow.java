@@ -7,7 +7,6 @@ import cupic.luka.image.hsb.transformer.filters.SaturationFilter;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,21 +20,41 @@ import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * The main window of the application.
+ *
+ * @author Luka Cupic
+ */
 public class MainWindow extends JFrame {
 
+	/**
+	 * The panel holding the image.
+	 */
 	private ImagePanel imagePanel;
 
+	/**
+	 * Hue filter.
+	 */
 	private HueFilter hueFilter = new HueFilter();
+
+	/**
+	 * Saturation filter.
+	 */
 	private SaturationFilter saturationFilter = new SaturationFilter();
+
+	/**
+	 * Brightness filter.
+	 */
 	private BrightnessFilter brightnessFilter = new BrightnessFilter();
 
+	/**
+	 * The application's default constructor.
+	 * Creates and initializes the main window and it's GUI.
+	 */
 	public MainWindow() {
 		setSize(600, 600);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -45,11 +64,19 @@ public class MainWindow extends JFrame {
 		initGUI();
 	}
 
+	/**
+	 * Initializes the GUI for this application.
+	 */
 	private void initGUI() {
 		setLayout(new BorderLayout());
 		setJMenuBar(creteMenuBar());
 	}
 
+	/**
+	 * Creates the menu bar of this application.
+	 *
+	 * @return the menu bar
+	 */
 	private JMenuBar creteMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 
@@ -66,6 +93,11 @@ public class MainWindow extends JFrame {
 		return menuBar;
 	}
 
+	/**
+	 * Creates the menu item for handling opening images.
+	 *
+	 * @return the menu item that handles opening images
+	 */
 	private JMenuItem createOpenItem() {
 		JMenuItem open = new JMenuItem("Open");
 		open.addActionListener(e -> {
@@ -95,6 +127,11 @@ public class MainWindow extends JFrame {
 		return open;
 	}
 
+	/**
+	 * Creates the menu item for handling saving images.
+	 *
+	 * @return the menu item that handles saving images
+	 */
 	private JMenuItem createSaveItem() {
 		JMenuItem save = new JMenuItem("Save");
 		save.addActionListener(e -> {
@@ -121,12 +158,23 @@ public class MainWindow extends JFrame {
 		return save;
 	}
 
+	/**
+	 * Creates the menu item for handling application exiting.
+	 *
+	 * @return the menu item that closes the application
+	 */
 	private JMenuItem createExitItem() {
 		JMenuItem exit = new JMenuItem("Exit");
 		exit.addActionListener(e -> System.exit(0));
 		return exit;
 	}
 
+	/**
+	 * Creates the menu item for opening the Hue, Saturation
+	 * and Brightness editing dialog.
+	 *
+	 * @return the menu item which opens the HSB editing dialog
+	 */
 	private JMenuItem createHSBItem() {
 		JMenuItem hsb = new JMenuItem("Change HSB");
 		hsb.addActionListener(e -> JOptionPane.showMessageDialog(
@@ -138,6 +186,12 @@ public class MainWindow extends JFrame {
 		return hsb;
 	}
 
+	/**
+	 * Creates the panel that holds Hue, Saturation and Brightness
+	 * sliders.
+	 *
+	 * @return the settings panel with HSB sliders
+	 */
 	private JPanel createSettingsPanel() {
 		JPanel settingsPanel = new JPanel();
 		settingsPanel.setLayout(new BoxLayout(settingsPanel, BoxLayout.Y_AXIS));
@@ -157,6 +211,15 @@ public class MainWindow extends JFrame {
 		return settingsPanel;
 	}
 
+	/**
+	 * Creates the slider for controlling each of the HSB values.
+	 *
+	 * @param filter the filter which is to be applied upon changing
+	 *               the slider value
+	 * @return the slider representing either the Hue, Saturation or
+	 * Brightness control slider, depending on the type of the provided
+	 * filter
+	 */
 	private JSlider createSlider(AbstractFilter filter) {
 		JSlider slider = new JSlider(0, 50, 25);
 		slider.addChangeListener(e -> {
@@ -169,6 +232,11 @@ public class MainWindow extends JFrame {
 		return slider;
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args command line arguments; not used here
+	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(MainWindow::new);
 	}
