@@ -1,8 +1,7 @@
-package cupic.luka.hsb.image;
+package cupic.luka.pix.image;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
 
 /**
  * A utility class which holds some commonly used methods
@@ -26,32 +25,42 @@ public class ImageUtil {
 		return b;
 	}
 
+	/**
+	 * Determines and returns the average color of the given image.
+	 *
+	 * @param image the image
+	 * @return the average value of all reds, greens and blues of
+	 * the given image
+	 */
 	public static Color getAverageColor(BufferedImage image) {
-		long redBucket = 0;
-		long greenBucket = 0;
-		long blueBucket = 0;
-		long pixelCount = 0;
+		long reds = 0;
+		long greens = 0;
+		long blues = 0;
+		long count = 0;
 
 		int[] pixel = new int[3];
 		for (int x = 0; x < image.getWidth(); x++) {
 			for (int y = 0; y < image.getHeight(); y++) {
 				pixel = image.getRaster().getPixel(x, y, pixel);
 
-				redBucket += pixel[0];
-				greenBucket += pixel[1];
-				blueBucket += pixel[2];
-				pixelCount++;
+				reds += pixel[0];
+				greens += pixel[1];
+				blues += pixel[2];
+				count++;
 			}
 		}
-
-		return new Color(
-				(int) (redBucket / pixelCount),
-				(int) (greenBucket / pixelCount),
-				(int) (blueBucket / pixelCount)
-		);
-
+		return new Color((int) (reds / count), (int) (greens / count), (int) (blues / count));
 	}
 
+	/**
+	 * Creates a new {@link BufferedImage} filled with the specidfied color
+	 * and of the given dimensions.
+	 *
+	 * @param c      the color of the image
+	 * @param width  the width of the image
+	 * @param height the height of the image
+	 * @return a colorized image of the given dimensions
+	 */
 	public static BufferedImage createImageFromColor(Color c, int width, int height) {
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2d = (Graphics2D) image.getGraphics();

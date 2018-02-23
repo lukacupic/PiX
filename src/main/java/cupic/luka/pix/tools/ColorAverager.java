@@ -1,18 +1,19 @@
-package cupic.luka.hsb.tools;
+package cupic.luka.pix.tools;
 
-import cupic.luka.hsb.image.ImagePanel;
-import cupic.luka.hsb.image.ImageUtil;
+import cupic.luka.pix.image.ImagePanel;
+import cupic.luka.pix.image.ImageUtil;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.image.*;
 
 /**
+ * A tool for determining the average color of an image.
+ *
  * @author Luka Cupic
  */
 public class ColorAverager extends JPanel {
@@ -22,6 +23,11 @@ public class ColorAverager extends JPanel {
 	 */
 	private ImagePanel imagePanel;
 
+	/**
+	 * Creates a new ColorAverager object.
+	 *
+	 * @param imagePanel the panel holding the image
+	 */
 	public ColorAverager(ImagePanel imagePanel) {
 		this.imagePanel = imagePanel;
 

@@ -1,9 +1,9 @@
-package cupic.luka.hsb;
+package cupic.luka.pix;
 
-import cupic.luka.hsb.image.ImagePanel;
-import cupic.luka.hsb.image.ImageProducer;
-import cupic.luka.hsb.tools.ColorAverager;
-import cupic.luka.hsb.tools.HSBChanger;
+import cupic.luka.pix.image.ImagePanel;
+import cupic.luka.pix.image.ImageProducer;
+import cupic.luka.pix.tools.ColorAverager;
+import cupic.luka.pix.tools.HSBChanger;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -36,7 +36,7 @@ public class MainWindow extends JFrame {
 	 * The application's default constructor.
 	 * Creates and initializes the main window and it's GUI.
 	 */
-	public MainWindow() {
+	private MainWindow() {
 		setSize(600, 600);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);

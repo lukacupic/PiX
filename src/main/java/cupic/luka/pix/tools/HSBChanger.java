@@ -1,10 +1,10 @@
-package cupic.luka.hsb.tools;
+package cupic.luka.pix.tools;
 
-import cupic.luka.hsb.filters.AbstractFilter;
-import cupic.luka.hsb.filters.BrightnessFilter;
-import cupic.luka.hsb.filters.HueFilter;
-import cupic.luka.hsb.filters.SaturationFilter;
-import cupic.luka.hsb.image.ImagePanel;
+import cupic.luka.pix.filters.AbstractFilter;
+import cupic.luka.pix.filters.BrightnessFilter;
+import cupic.luka.pix.filters.HueFilter;
+import cupic.luka.pix.filters.SaturationFilter;
+import cupic.luka.pix.image.ImagePanel;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;

@@ -1,4 +1,4 @@
-package cupic.luka.hsb.image;
+package cupic.luka.pix.image;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
