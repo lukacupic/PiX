@@ -1,23 +1,17 @@
 package cupic.luka.hsb;
 
-import cupic.luka.hsb.filters.HueFilter;
-import cupic.luka.hsb.filters.AbstractFilter;
-import cupic.luka.hsb.filters.BrightnessFilter;
-import cupic.luka.hsb.filters.SaturationFilter;
 import cupic.luka.hsb.image.ImagePanel;
 import cupic.luka.hsb.image.ImageProducer;
+import cupic.luka.hsb.tools.ColorAverager;
+import cupic.luka.hsb.tools.HSBChanger;
 
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileFilter;
@@ -37,21 +31,6 @@ public class MainWindow extends JFrame {
 	 * The panel holding the image.
 	 */
 	private ImagePanel imagePanel;
-
-	/**
-	 * Hue filter.
-	 */
-	private HueFilter hueFilter = new HueFilter();
-
-	/**
-	 * Saturation filter.
-	 */
-	private SaturationFilter saturationFilter = new SaturationFilter();
-
-	/**
-	 * Brightness filter.
-	 */
-	private BrightnessFilter brightnessFilter = new BrightnessFilter();
 
 	/**
 	 * The application's default constructor.
@@ -90,6 +69,7 @@ public class MainWindow extends JFrame {
 
 		JMenuItem tools = new JMenu("Tools");
 		tools.add(createHSBItem());
+		tools.add(createColorAveragerItem());
 		menuBar.add(tools);
 
 		return menuBar;
@@ -181,7 +161,7 @@ public class MainWindow extends JFrame {
 		JMenuItem hsb = new JMenuItem("Change HSB");
 		hsb.addActionListener(e -> JOptionPane.showMessageDialog(
 				null,
-				createSettingsPanel(),
+				new HSBChanger(imagePanel),
 				"Change HSB",
 				JOptionPane.PLAIN_MESSAGE
 		));
@@ -189,49 +169,19 @@ public class MainWindow extends JFrame {
 	}
 
 	/**
-	 * Creates the panel that holds Hue, Saturation and Brightness
-	 * sliders.
+	 * Creates the menu item for opening the Color Averager.
 	 *
-	 * @return the settings panel with HSB sliders
+	 * @return the menu item which opens the Color Averager.
 	 */
-	private JPanel createSettingsPanel() {
-		JPanel settingsPanel = new JPanel();
-		settingsPanel.setLayout(new BoxLayout(settingsPanel, BoxLayout.Y_AXIS));
-
-		JSlider hueSlider = createSlider(hueFilter);
-		settingsPanel.add(new JLabel("Hue:"));
-		settingsPanel.add(hueSlider);
-
-		JSlider saturationSlider = createSlider(saturationFilter);
-		settingsPanel.add(new JLabel("Saturation:"));
-		settingsPanel.add(saturationSlider);
-
-		JSlider brightnessSlider = createSlider(brightnessFilter);
-		settingsPanel.add(new JLabel("Brightness:"));
-		settingsPanel.add(brightnessSlider);
-
-		return settingsPanel;
-	}
-
-	/**
-	 * Creates the slider for controlling each of the HSB values.
-	 *
-	 * @param filter the filter which is to be applied upon changing
-	 *               the slider value
-	 * @return the slider representing either the Hue, Saturation or
-	 * Brightness control slider, depending on the type of the provided
-	 * filter
-	 */
-	private JSlider createSlider(AbstractFilter filter) {
-		JSlider slider = new JSlider(0, 50, 25);
-		slider.addChangeListener(e -> {
-			JSlider source = (JSlider) e.getSource();
-			float offset = 1.0f / source.getMaximum() * source.getValue();
-			filter.setOffset(2 * offset - 1);
-			filter.apply(imagePanel.getImage(), imagePanel.getOriginal());
-			imagePanel.repaint();
-		});
-		return slider;
+	private JMenuItem createColorAveragerItem() {
+		JMenuItem hsb = new JMenuItem("Color Averager");
+		hsb.addActionListener(e -> JOptionPane.showMessageDialog(
+				null,
+				new ColorAverager(imagePanel),
+				"Get Average Color",
+				JOptionPane.PLAIN_MESSAGE
+		));
+		return hsb;
 	}
 
 	/**
