@@ -5,6 +5,7 @@
 Currently available tools are:
 * modifying the HSB (Hue, Saturation, Brightness) components of the image
 * determining the average color of the loaded image
+* inverting image colors
 
 In case the user decides to use the "HSB Changer" tool, the end result might look something like this:
 ![alt text](https://i.imgur.com/SgPeYB0.jpg)
