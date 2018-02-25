@@ -6,7 +6,6 @@ import cupic.luka.pix.image.ImageUtil;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.image.*;
@@ -16,12 +15,7 @@ import java.awt.image.*;
  *
  * @author Luka Cupic
  */
-public class ColorAverager extends JPanel {
-
-	/**
-	 * The panel holding the image.
-	 */
-	private ImagePanel imagePanel;
+public class ColorAverager extends AbstractTool {
 
 	/**
 	 * Creates a new ColorAverager object.
@@ -29,8 +23,7 @@ public class ColorAverager extends JPanel {
 	 * @param imagePanel the panel holding the image
 	 */
 	public ColorAverager(ImagePanel imagePanel) {
-		this.imagePanel = imagePanel;
-
+		super(imagePanel);
 		initGUI();
 	}
 

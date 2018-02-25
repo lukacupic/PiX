@@ -1,4 +1,4 @@
-package cupic.luka.pix.filters;
+package cupic.luka.pix.tools.hsb.filters;
 
 import java.awt.image.*;
 

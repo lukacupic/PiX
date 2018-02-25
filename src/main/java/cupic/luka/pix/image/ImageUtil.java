@@ -68,4 +68,17 @@ public class ImageUtil {
 		g2d.fillRect(0, 0, width, height);
 		return image;
 	}
+
+	/**
+	 * Converts the given color, represented by the RBG components
+	 * to an integer representation.
+	 *
+	 * @param r the red component
+	 * @param g the green component
+	 * @param b the blue component
+	 * @return an integer representation of the given color
+	 */
+	public static int convertRGBToInt(int r, int g, int b) {
+		return 0xFFFF * r + 0xFF * g + b;
+	}
 }

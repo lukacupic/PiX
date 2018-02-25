@@ -3,7 +3,8 @@ package cupic.luka.pix;
 import cupic.luka.pix.image.ImagePanel;
 import cupic.luka.pix.image.ImageProducer;
 import cupic.luka.pix.tools.ColorAverager;
-import cupic.luka.pix.tools.HSBChanger;
+import cupic.luka.pix.tools.ColorInverter;
+import cupic.luka.pix.tools.hsb.HSBChanger;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -33,6 +34,13 @@ public class MainWindow extends JFrame {
 	private ImagePanel imagePanel;
 
 	/**
+	 * The image-processing tools.
+	 */
+	private HSBChanger hsbChanger;
+	private ColorAverager colorAverager;
+	private ColorInverter colorInverter;
+
+	/**
 	 * The application's default constructor.
 	 * Creates and initializes the main window and it's GUI.
 	 */
@@ -41,6 +49,7 @@ public class MainWindow extends JFrame {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
+		setTitle("PiX v0.1");
 
 		initGUI();
 	}
@@ -70,6 +79,7 @@ public class MainWindow extends JFrame {
 		JMenuItem tools = new JMenu("Tools");
 		tools.add(createHSBItem());
 		tools.add(createColorAveragerItem());
+		tools.add(createColorInverterItem());
 		menuBar.add(tools);
 
 		return menuBar;
@@ -93,6 +103,7 @@ public class MainWindow extends JFrame {
 				File file = fc.getSelectedFile();
 				try {
 					imagePanel = new ImagePanel(file);
+					createTools();
 				} catch (IOException ex) {
 					JOptionPane.showMessageDialog(
 							MainWindow.this,
@@ -107,6 +118,12 @@ public class MainWindow extends JFrame {
 			}
 		});
 		return open;
+	}
+
+	private void createTools() {
+		hsbChanger = new HSBChanger(imagePanel);
+		colorAverager = new ColorAverager(imagePanel);
+		colorInverter = new ColorInverter(imagePanel);
 	}
 
 	/**
@@ -158,11 +175,11 @@ public class MainWindow extends JFrame {
 	 * @return the menu item which opens the HSB editing dialog
 	 */
 	private JMenuItem createHSBItem() {
-		JMenuItem hsb = new JMenuItem("Change HSB");
+		JMenuItem hsb = new JMenuItem("HSB Changer");
 		hsb.addActionListener(e -> JOptionPane.showMessageDialog(
 				null,
-				new HSBChanger(imagePanel),
-				"Change HSB",
+				hsbChanger,
+				"HSB Changer",
 				JOptionPane.PLAIN_MESSAGE
 		));
 		return hsb;
@@ -177,10 +194,21 @@ public class MainWindow extends JFrame {
 		JMenuItem hsb = new JMenuItem("Color Averager");
 		hsb.addActionListener(e -> JOptionPane.showMessageDialog(
 				null,
-				new ColorAverager(imagePanel),
-				"Get Average Color",
+				colorAverager,
+				"Color Averager",
 				JOptionPane.PLAIN_MESSAGE
 		));
+		return hsb;
+	}
+
+	/**
+	 * Creates the menu item for opening the Color Inverter.
+	 *
+	 * @return the menu item which opens the Color Inverter.
+	 */
+	private JMenuItem createColorInverterItem() {
+		JMenuItem hsb = new JMenuItem("Color Inverter");
+		hsb.addActionListener(e -> colorInverter.invert());
 		return hsb;
 	}
 

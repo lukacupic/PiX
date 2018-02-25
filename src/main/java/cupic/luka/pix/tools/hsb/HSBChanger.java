@@ -1,14 +1,14 @@
-package cupic.luka.pix.tools;
+package cupic.luka.pix.tools.hsb;
 
-import cupic.luka.pix.filters.AbstractFilter;
-import cupic.luka.pix.filters.BrightnessFilter;
-import cupic.luka.pix.filters.HueFilter;
-import cupic.luka.pix.filters.SaturationFilter;
+import cupic.luka.pix.tools.hsb.filters.AbstractFilter;
+import cupic.luka.pix.tools.hsb.filters.BrightnessFilter;
+import cupic.luka.pix.tools.hsb.filters.HueFilter;
+import cupic.luka.pix.tools.hsb.filters.SaturationFilter;
 import cupic.luka.pix.image.ImagePanel;
+import cupic.luka.pix.tools.AbstractTool;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 /**
@@ -17,7 +17,7 @@ import javax.swing.JSlider;
  *
  * @author Luka Cupic
  */
-public class HSBChanger extends JPanel {
+public class HSBChanger extends AbstractTool {
 
 	/**
 	 * The largest value for the HSB sliders.
@@ -27,22 +27,17 @@ public class HSBChanger extends JPanel {
 	/**
 	 * Hue filter.
 	 */
-	private HueFilter hueFilter = new HueFilter();
+	private final HueFilter hueFilter = new HueFilter();
 
 	/**
 	 * Saturation filter.
 	 */
-	private SaturationFilter saturationFilter = new SaturationFilter();
+	private final SaturationFilter saturationFilter = new SaturationFilter();
 
 	/**
 	 * Brightness filter.
 	 */
-	private BrightnessFilter brightnessFilter = new BrightnessFilter();
-
-	/**
-	 * The panel holding the image.
-	 */
-	private ImagePanel imagePanel;
+	private final BrightnessFilter brightnessFilter = new BrightnessFilter();
 
 	/**
 	 * Creates a new HSBChanger object.
@@ -50,8 +45,7 @@ public class HSBChanger extends JPanel {
 	 * @param imagePanel the panel holding the image
 	 */
 	public HSBChanger(ImagePanel imagePanel) {
-		this.imagePanel = imagePanel;
-
+		super(imagePanel);
 		initGUI();
 	}
 
