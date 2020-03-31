@@ -9,6 +9,4 @@ Currently available tools are:
 
 ![alt text](https://i.imgur.com/66QZhYQ.png)
 
-After applying tool(s) on the image, the user can choose to save the obtained result by exporting the edited image.
-
 ***
