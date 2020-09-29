@@ -7,6 +7,4 @@ Currently available tools are:
 * determining the average color of the loaded image
 * inverting image colors
 
-![alt text](https://i.imgur.com/66QZhYQ.png)
-
-***
+![alt text](https://lukacupic.github.io/backgrounds/PiX.png)
