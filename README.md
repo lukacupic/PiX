@@ -7,4 +7,4 @@ Currently available tools are:
 * determining the average color of the loaded image
 * inverting image colors
 
-![alt text](https://lukacupic.github.io/assets/img/projects/PiX.jpg)
+![alt text](https://lukacupic.netlify.app/assets/img/projects/PiX.jpg)
